@@ -70,28 +70,45 @@ For a detailed walkthrough of the project and its implementation, check out our 
 
 | Model | Configuration | Accuracy | F1 Score | Recall | Precision |
 |-------|--------------|----------|-----------|---------|------------|
-| Baseline NN | Simple 2-layer, Adam (default) | {results[0]['metrics']['accuracy']:.4f} | {results[0]['metrics']['f1']:.4f} | {results[0]['metrics']['recall']:.4f} | {results[0]['metrics']['precision']:.4f} |
-| L2 Regularized NN | Adam (LR=0.0001), L2, Early Stopping | {results[1]['metrics']['accuracy']:.4f} | {results[1]['metrics']['f1']:.4f} | {results[1]['metrics']['recall']:.4f} | {results[1]['metrics']['precision']:.4f} |
-| Dropout NN | RMSprop, Dropout=0.2 | {results[2]['metrics']['accuracy']:.4f} | {results[2]['metrics']['f1']:.4f} | {results[2]['metrics']['recall']:.4f} | {results[2]['metrics']['precision']:.4f} |
-| L1 Regularized NN | Adam (LR=0.01), L1 | {results[3]['metrics']['accuracy']:.4f} | {results[3]['metrics']['f1']:.4f} | {results[3]['metrics']['recall']:.4f} | {results[3]['metrics']['precision']:.4f} |
-| Random Forest | GridSearchCV Optimized | {results[4]['metrics']['accuracy']:.4f} | {results[4]['metrics']['f1']:.4f} | {results[4]['metrics']['recall']:.4f} | {results[4]['metrics']['precision']:.4f} |
+| Baseline NN | Simple 2-layer, Adam (default) | 0.9726 | 0.9719 | 0.9726 | 0.9735 |
+| L2 Regularized NN | Adam (LR=0.0001), L2, Early Stopping | 0.9819 | 0.9816 | 0.9819 | 0.9822 |
+| Dropout NN | RMSprop, Dropout=0.2 | 0.8463 | 0.8579 | 0.8463 | 0.9097 |
+| L1 Regularized NN | Adam (LR=0.01), L1 | 0.9720 | 0.9714 | 0.9720 | 0.9724 |
+| Logistic Regression | Best params: {'C': 100, 'class_weight': 'balanced'} | 0.9054 | 0.9099 | 0.9054 | 0.9260 |
+| Random Forest | GridSearchCV Optimized | 0.9998 | 0.9998 | 0.9998 | 0.9998 |
+
+## Visualizations
+
+### Model Architecture
+![Neural Network Layers](images/layers.png)
+*Neural network architecture showing the different layers and their configurations*
+
+### Model Comparison
+![Model Comparison](images/comparison.png)
+*Performance comparison across different model architectures*
+
+### Random Forest Analysis
+![Random Forest Results](images/random.png)
+*Random Forest feature importance and confusion matrix*
 
 ## Key Findings
 
-1. Best Performing Model: {best_model['Model']}
-   - Configuration: {best_model['Configuration']}
-   - F1 Score: {best_model['F1 Score']:.4f}
-   - Accuracy: {best_model['Accuracy']:.4f}
+1. Best Performing Model: Random Forest
+   - Configuration: GridSearchCV Optimized
+   - F1 Score: 0.9998
+   - Accuracy: 0.9998
+   - Perfect precision and recall scores
 
 2. Impact of Regularization:
-   - L2 regularization with early stopping showed improved generalization
-   - Dropout helped reduce overfitting in the deeper network
-   - L1 regularization promoted feature sparsity
+   - L2 regularization with early stopping showed improved generalization (98.19% accuracy)
+   - Dropout model showed lower performance (84.63% accuracy) but good precision (90.97%)
+   - L1 regularization achieved similar performance to baseline (97.20% vs 97.26%)
 
 3. Optimization Insights:
    - Lower learning rates (0.0001) with Adam performed better than higher rates
-   - RMSprop with dropout showed competitive performance
+   - RMSprop with dropout showed competitive performance despite lower accuracy
    - Early stopping helped prevent overfitting in Instance 2
+   - Logistic Regression performed well (90.54% accuracy) but not as good as neural networks
 
 ## Usage
 
