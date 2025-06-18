@@ -26,6 +26,9 @@ ML/STUNTING/
     └── nn_model_instance4.h5
 ```
 
+## Video Demonstration
+For a detailed walkthrough of the project and its implementation, check out our [video demonstration](https://drive.google.com/drive/folders/1zL1vrziJ5Vb9hCgAXoaibgjJFgB9rTqY?usp=sharing).
+
 ## Model Implementations
 
 ### 1. Random Forest Classifier
