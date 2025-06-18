@@ -1,0 +1,11 @@
+setuptools
+wheel
+numpy
+pandas
+scikit-learn
+tensorflow
+seaborn
+matplotlib
+joblib
+jupyter
+notebook
