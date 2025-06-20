@@ -1,6 +1,7 @@
 # Early Detection of Child Malnutrition using Machine Learning
 
-This project implements various machine learning models to predict child stunting using anthropometric measurements and demographic data. The goal is to develop an early detection system for child malnutrition by comparing different model architectures and optimization techniques.
+## Problem Statement
+Child malnutrition remains a critical public health concern, particularly in developing regions. Early detection is crucial for preventing long-term health complications. This project aims to develop a machine learning-based system that can accurately predict child stunting using anthropometric measurements and demographic data, enabling healthcare workers to identify at-risk children early and intervene appropriately.
 
 ## Dataset
 
@@ -42,26 +43,26 @@ For a detailed walkthrough of the project and its implementation, check out our 
 ### 2. Neural Network Models
 
 #### Instance 1: Baseline Model
-- Architecture: 2 hidden layers [64, 32]
+- Architecture: 3 hidden layers [64, 32, 16]
 - Optimizer: Adam (default learning rate)
 - No regularization
 - Fixed 50 epochs
 
 #### Instance 2: L2 Regularized Model
-- Architecture: 2 hidden layers [64, 32]
+- Architecture: 3 hidden layers [64, 32, 16]
 - Optimizer: Adam (learning rate = 0.0001)
 - L2 regularization (strength = 0.001)
 - Early stopping (patience = 10)
 - Max 200 epochs
 
 #### Instance 3: Dropout Model
-- Architecture: 3 hidden layers [128, 64, 32]
+- Architecture: 3 hidden layers [64, 32, 16]
 - Optimizer: RMSprop (default learning rate)
 - Dropout rate: 0.2
 - Fixed 70 epochs
 
 #### Instance 4: L1 Regularized Model
-- Architecture: 2 hidden layers [64, 32]
+- Architecture: 3 hidden layers [64, 32, 16]
 - Optimizer: Adam (learning rate = 0.01)
 - L1 regularization (strength = 0.001)
 - Fixed 100 epochs
@@ -70,10 +71,10 @@ For a detailed walkthrough of the project and its implementation, check out our 
 
 | Model | Configuration | Accuracy | F1 Score | Recall | Precision |
 |-------|--------------|----------|-----------|---------|------------|
-| Baseline NN | Simple 2-layer, Adam (default) | 0.9726 | 0.9719 | 0.9726 | 0.9735 |
-| L2 Regularized NN | Adam (LR=0.0001), L2, Early Stopping | 0.9819 | 0.9816 | 0.9819 | 0.9822 |
-| Dropout NN | RMSprop, Dropout=0.2 | 0.8463 | 0.8579 | 0.8463 | 0.9097 |
-| L1 Regularized NN | Adam (LR=0.01), L1 | 0.9720 | 0.9714 | 0.9720 | 0.9724 |
+| Baseline NN | Simple 2-layer, Adam (default) | 0.9781 | 0.9778 | 0.9781 | 0.9785 |
+| L2 Regularized NN | Adam (LR=0.0001), L2, Early Stopping | 0.9849 | 0.9848 | 0.9849 | 0.9850 |
+| Dropout NN | RMSprop, Dropout=0.2 | 0.6582 | 0.6853 | 0.6582 | 0.8666 |
+| L1 Regularized NN | Adam (LR=0.01), L1 | 0.9777 | 0.9775 | 0.9777 | 0.9776 |
 | Logistic Regression | Best params: {'C': 100, 'class_weight': 'balanced'} | 0.9054 | 0.9099 | 0.9054 | 0.9260 |
 | Random Forest | GridSearchCV Optimized | 0.9998 | 0.9998 | 0.9998 | 0.9998 |
 
@@ -100,9 +101,9 @@ For a detailed walkthrough of the project and its implementation, check out our 
    - Perfect precision and recall scores
 
 2. Impact of Regularization:
-   - L2 regularization with early stopping showed improved generalization (98.19% accuracy)
-   - Dropout model showed lower performance (84.63% accuracy) but good precision (90.97%)
-   - L1 regularization achieved similar performance to baseline (97.20% vs 97.26%)
+   - L2 regularization with early stopping showed improved generalization (98.49% accuracy)
+   - Dropout model showed lower performance (65.82% accuracy) but good precision (86.66%)
+   - L1 regularization achieved similar performance to baseline (97.77% vs 97.81%)
 
 3. Optimization Insights:
    - Lower learning rates (0.0001) with Adam performed better than higher rates
