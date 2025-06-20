@@ -56,7 +56,7 @@ For a detailed walkthrough of the project and its implementation, check out our 
 - Max 200 epochs
 
 #### Instance 3: Dropout Model
-- Architecture: 3 hidden layers [64, 32, 16]
+- Architecture: 3 hidden layers [128, 64, 32]
 - Optimizer: RMSprop (default learning rate)
 - Dropout rate: 0.2
 - Fixed 70 epochs
